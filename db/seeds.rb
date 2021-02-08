@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.delete_all
+Product.delete_all
+
+3.times do
+  user = User.create! email: Faker::Internet.email,
+                      password:'12345666'
+  puts "Create users #{user.email}"
+
+  2.times do
+  product = Product.create!(
+      title: Faker::Cannabis.type,
+      price: rand(1.0..100.0),
+      published: true,
+      user_id: user.id
+  )
+  puts "Create a new product #{product.title}"
+  end
+end
