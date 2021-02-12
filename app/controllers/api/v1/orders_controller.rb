@@ -7,7 +7,7 @@ class Api::V1::OrdersController < ApplicationController
                           .page(current_page)
                           .per(per_page)
 
-    options = get_links_serializer_options(api_v1_orders_path, @orders)
+    options = get_links_serializer_options('api_v1_orders_path', @orders)
 
     render json: OrderSerializer.new(@orders, options).serializable_hash
   end
